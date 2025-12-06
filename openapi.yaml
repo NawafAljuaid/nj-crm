@@ -1,0 +1,51 @@
+openapi: 3.0.3
+info:
+  title: Flow CRM API
+  version: 1.0.0
+  description: API documentation for Flow CRM
+
+servers:
+  - url: http://localhost:3000
+
+paths:
+  /organizations:
+    post:
+      summary: Create a new organization
+      operationId: createOrganization
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                businessType:
+                  type: string
+              required:
+                - name
+      responses:
+        "201":
+          description: Organization created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Organization"
+        "400":
+          description: Invalid input
+
+components:
+  schemas:
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        businessType:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
