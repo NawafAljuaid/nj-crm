@@ -32,6 +32,7 @@ export class Organization {
     }
 
     set name(value: string) {
+        
         const trimmed = value.trim();
 
         if(!trimmed) {
